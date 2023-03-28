@@ -1,11 +1,17 @@
-.shop-container{
+.shop-container {
     display: grid;
     grid-template-columns: 4fr 1fr;
 }
-.products-container{
+
+.products-container {
     margin-top: 100px;
     margin-left: 80px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 45px;
+}
+
+.summary {
+    padding: 23px;
+    background: rgba(255, 153, 0, 0.3);
 }
