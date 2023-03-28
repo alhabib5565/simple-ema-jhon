@@ -15,6 +15,7 @@
 
 .details h6{
     margin-top: 0;
+    margin-bottom: 0;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
@@ -31,4 +32,10 @@
 background: #FFE0B3;
 border: 1px solid #95A0A7;
 border-radius: 0px 0px 8px 8px;
+}
+.btn-cart:hover{
+    background: orange;
+}
+.mnfctrr{
+    margin: 0;
 }
