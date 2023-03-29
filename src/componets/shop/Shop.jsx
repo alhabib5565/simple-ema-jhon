@@ -6,16 +6,29 @@ import './Shop.css'
 const Shop = () => {
     let [products, setProducts] = useState([])
     let [cart, setCart] = useState([])
-    useEffect(()=> {
+    useEffect(() => {
         fetch('products.json')
-        .then(res => res.json())
-        .then(data => setProducts(data))
-    },[])
-    useEffect(()=>{
+            .then(res => res.json())
+            .then(data => setProducts(data))
+    }, [])
+    useEffect(() => {
         const storedCard = getShoppingCart()
-        console.log(storedCard)
-    },[])
-    function handelId (product){
+        let savecart = []
+        for (let id in storedCard) {
+            // console.log('id', id)
+            let saveProducts = products.find(product => product.id === id)
+            console.log(saveProducts)
+            if (saveProducts) {
+                let quantity = storedCard[id]
+                saveProducts.quantity = quantity
+                savecart.push(saveProducts)
+            }
+            setCart(savecart)
+
+        }
+        // console.log(storedCard)
+    }, [products])
+    function handelId(product) {
         // console.log('added item',product, cart)
         let newCart = [...cart, product]
         setCart(newCart)
@@ -25,11 +38,11 @@ const Shop = () => {
         <div className='shop-container'>
             <div className="products-container">
                 {
-                    products.map(product => <Product 
-                        key={product.id} 
+                    products.map(product => <Product
+                        key={product.id}
                         product={product}
                         handelId={handelId}
-                        ></Product>)
+                    ></Product>)
                 }
             </div>
             <div className='summary'>
